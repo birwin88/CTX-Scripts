@@ -1,3 +1,5 @@
+##Author Bryant Irwin - https://www.linkedin.com/in/bryant-irwin-9680993b/
+
 ##Add vmware
 Import-Module VMware.VimAutomation.Core
 asnp vmware*
