@@ -27,7 +27,7 @@ else{
 
 ##uncomment to allow untrusted certs
 ##set-powercliconfiguration -invalidcertificateaction Ignore -Confirm:false
-##Connect to vcenter
+##Connect to vcenter by prompting for creds to bypass current bug https://knowledge.broadcom.com/external/article/317470/pass-through-authentication-via-powercli.html
 connect-viserver $vsphereserver -Credential(Get-Credential)
 
 ##Configure PVS Connection
@@ -38,6 +38,7 @@ Write-Host "$PVSServer has been set as the active PVS Server"
 $machines = Get-BrokerMachine -MaxRecordCount 2000 -AdminAddress $AdminAddress -DesktopGroupName $DeliveryGroup.Name
 
 ##Building UEFI vmware object so it doesn't constantly get rebuilt during any loops
+##Inspiration cgutz https://community.broadcom.com/vmware-cloud-foundation/discussion/powercli-find-bios-or-efi-boot-option
 $uefi = New-Object VMware.Vim.VirtualMachineConfigSpec
 $uefi.Firmware = New-Object VMware.Vim.GuestOSDescriptor
 $uefi.Firmware = "efi"
