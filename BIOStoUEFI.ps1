@@ -121,9 +121,9 @@ ForEach($machine in $machines){
     }
 
     ##If it's already UEFI, do not reconfigure it
-    If ($vmFirmware.Firmware -eq "uefi")
+    If ($vmFirmware.Firmware -eq "efi")
     {
-        write-host "$vm is already configured for uefi boot"
+        write-host "$vm is already configured for efi boot"
         $time=Get-Date
         echo "Date:$time machine:$vm already has uefi boot configured.  Will not modify" >>.\UEFI-Reconfig.txt
     }
